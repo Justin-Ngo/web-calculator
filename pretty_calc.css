@@ -1,0 +1,61 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.calc-container {
+	display: flex;
+	flex-direction: column;
+	/* 
+	Vertical center 
+	https://css-tricks.com/quick-css-trick-how-to-center-an-object-exactly-in-the-center/ 
+	*/
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	border: 1px solid;
+	border-radius: 15px;
+}
+
+/* #### DISPLAY #### */
+.screen-container {
+	border: 1px solid green;
+}
+
+input.display{
+	text-align: right;
+}
+
+/* #### INPUTS #### */
+.input-container {
+	border: 1px solid red;
+}
+
+.function-container.top {
+	border: 1px solid rgb(76, 0, 255);
+}
+
+.bottom-container{
+	border: 1px solid black;
+	display: flex;
+	flex-direction: row-reverse;
+	
+}
+
+.function-container.right {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid rgb(255, 0, 179);
+}
+
+.number-container {
+	display: grid;
+	grid-template: repeat(3, 1fr)/ repeat(3, 1fr);
+}
+
+.zero{
+	grid-column: span 2;
+}
