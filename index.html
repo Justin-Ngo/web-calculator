@@ -4,14 +4,15 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="./pretty_calc.css">
 		<script type="text/javascript" src="./calculator.js"></script>
+		<title>Juyn's Web Calculator </title>
 	</head>
 	<body>
+		<span id="title">Welcome to Juyn's Web Calculator</span>
 		<div class="calc-container">
-
 			<div class="screen-container">
-				<input class="display" type="text" value="Calculator" readonly>
+				<input class="display" type="text" value="Calculator" spellcheck="false">
+				<span class="operator"></span>
 			</div>
-
 			<div class="input-container">
 				<div class="function-container top">
 					<input class="btn func clear" type="button" value="C">
@@ -19,29 +20,28 @@
 					<input class="btn func multiply" type="button" value="*">
 					<input class="btn func subtract" type="button" value="-">
 				</div>
-				
-				<div class="bottom-container">
-					<div class="function-container right">
-						<input class="btn func add" type="button" value="+">
-						<input class="btn func equal" type="button" value="=">
-					</div>
-					<div class="number-container">
-						<input class="btn num seven" type="button" value="7">
-						<input class="btn num eight" type="button" value="8">
-						<input class="btn num nine" type="button" value="9">
-						<input class="btn num four" type="button" value="4">
-						<input class="btn num five" type="button" value="5">
-						<input class="btn num six" type="button" value="6">
-						<input class="btn num one" type="button" value="1">
-						<input class="btn num two" type="button" value="2">
-						<input class="btn num three" type="button" value="3">
-						<input class="btn num zero" type="button" value="0">
-						<input class="btn num dot" type="button" value=".">
-					</div>
+				<div class="function-container right">
+					<input class="btn func add" type="button" value="+">
+					<input class="btn func equal" type="button" value="=">
 				</div>
-				
+				<div class="number-container">
+					<input class="btn num seven" type="button" value="7">
+					<input class="btn num eight" type="button" value="8">
+					<input class="btn num nine" type="button" value="9">
+					<input class="btn num four" type="button" value="4">
+					<input class="btn num five" type="button" value="5">
+					<input class="btn num six" type="button" value="6">
+					<input class="btn num one" type="button" value="1">
+					<input class="btn num two" type="button" value="2">
+					<input class="btn num three" type="button" value="3">
+					<input class="btn num zero" type="button" value="0">
+					<input class="btn num dot" type="button" value=".">
+				</div>
 			</div>
 
 		</div>
 	</body>
+	<script>
+		display()
+	</script>
 </html>
