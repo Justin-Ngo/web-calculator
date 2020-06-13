@@ -10,10 +10,10 @@
 		<span id="title">Welcome to Juyn's Web Calculator</span>
 		<div class="calc-container">
 			<div class="screen-container">
-				<input class="display" type="text" value="Calculator" spellcheck="false">
+				<input class="display invalid" type="text" value="Welcome" spellcheck="false">
 				<span class="operator"></span>
 			</div>
-			<div class="input-container">
+			<div class="input-container" data-operator="" data-a="" data-b="">
 				<div class="function-container top">
 					<input class="btn func clear" type="button" value="C">
 					<input class="btn func divide" type="button" value="/">
@@ -42,6 +42,6 @@
 		</div>
 	</body>
 	<script>
-		display()
+		init_btns();
 	</script>
 </html>
