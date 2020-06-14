@@ -6,8 +6,10 @@ let calculatorNamespace = {
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval#Do_not_ever_use_eval!
 // NEVER USE Eval() 
 
+// Helper function
 let byClass = document.getElementsByClassName.bind(document);
 
+// Math Logic
 function add(a, b) {
 	return (a + b);
 }
@@ -26,6 +28,7 @@ function divide(a, b){
 	
 }
 
+// Math function helper
 function operate(operator, a, b){
 	switch (operator) {
 		case "+":
@@ -53,6 +56,7 @@ function validateInput(screenDisplay){
 	return true;
 }
 
+// "main" function to call once DOM has loaded
 function init_btns() {
 	document.querySelectorAll('input.btn').forEach(item => {
 		item.addEventListener('mousedown', event =>{
@@ -64,19 +68,25 @@ function init_btns() {
 }
 
 
+// backbone of the calulator
 function display(val){
 	let screenDisplay = byClass('display');
 
+	// When validateinput returns invalid 
 	if (byClass('invalid').length > 0){
 		screenDisplay[0].value = "";
 		byClass('operator')[0].textContent = "";
 		screenDisplay[0].classList.remove("invalid");
 	}
 
+	// When a button is pressed that is +, -, enter, clear, divide, multiply
 	if (isNaN(val) && val !== "."){
+		// scope variables 
 		let op = byClass('operator')[0];
 		op.textContent = val;
 		let inputs = byClass("input-container");
+
+		// clear screen
 		if (val == "C") {
 			screenDisplay[0].value = "";
 			inputs[0].dataset.operator = "";
@@ -84,7 +94,7 @@ function display(val){
 			inputs[0].dataset.b = "";
 			inputs[0].classList.remove("new-num");
 		} else {
-
+			// check input string to be a number and assign values to be used later
 			if (validateInput(screenDisplay)) {
 				if (inputs[0].dataset.a == ""){
 					inputs[0].dataset.a = screenDisplay[0].value;
@@ -93,8 +103,11 @@ function display(val){
 				}
 			}
 			
+			// When Data a & b are not empty computer the last operator chosen
 			if (inputs[0].dataset.a !=="" && inputs[0].dataset.b !==""){
 				let ans = operate(inputs[0].dataset.operator, Number(inputs[0].dataset.a), Number(inputs[0].dataset.b));
+				// if not equal assign to data 'a' so that it can be used for the next operation
+				// useful for chaining operations. 
 				if (val !== "="){
 					screenDisplay[0].value = String(ans);
 					inputs[0].dataset.a = String(ans);
@@ -107,6 +120,7 @@ function display(val){
 			
 			}
 
+			// add class to check if the screen needs to be cleared on next input
 			inputs[0].classList.add("new-num");
 			if (val !== "="){
 				inputs[0].dataset.operator = val;
@@ -115,12 +129,14 @@ function display(val){
 			}
 		}
 	}
-	else 
-	{
+	// if numbers were pressed 0-9 or dot
+	else {
+		// check to see if you need to remove the current screen
 		if (byClass('new-num').length > 0){
 			screenDisplay[0].value = "";
 			byClass("input-container")[0].classList.remove("new-num");
 		}
+		// append values to the end of current string
 		if (val === "." && validateInput(screenDisplay)){
 			screenDisplay[0].value += val;	
 		} else {
